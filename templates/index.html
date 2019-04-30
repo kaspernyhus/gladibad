@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h1 class="state">{{status}}</h1>
+    <br>
+    {% if state == 1 %}
+    <p class="status">Har været optaget i {{time_passed}} {% if time_passed == 1 %} minut {% else %} minutter {% endif %}</p>
+    
+    <!--
+    <div style="padding-top: 100px" ; align="center">
+        <button style="font-family:courier;" type="button" onclick="alert('Du er i kø'); ">Stil mig i kø</button>
+    </div>
+    
+    <div>
+        <p style="font-family:courier; text-align:center;">Antal i kø: {{in_que}}</p>
+    </div>
+    -->
+
+    {% endif %}
+</div>
+
+{% endblock %} 

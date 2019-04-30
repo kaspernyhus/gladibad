@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+class BrState(models.Model):
+    state = models.BooleanField(default=False)
+    timestamp = models.DateTimeField(auto_now=True)
+    que = models.IntegerField(default=0)
