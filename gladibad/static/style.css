@@ -1,0 +1,20 @@
+.state {
+    font-family: courier;
+    text-align:center;
+    font-size:300%;
+}
+.status {
+    font-family: courier;
+    text-align:center;
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    font-family: courier;
+    text-align:center;
+    font-size:70%
+    }
