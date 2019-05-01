@@ -6,6 +6,6 @@
 <h1 class="state">DB succesfully updated</h1>
 
 <p class="status">{{state}}</p>
-<p class="status">{{timestamp}}</p>
+<p class="status">{{timestamp|date:"d M Y"}} {{timestamp|time:"H:i"}}</p>
 
 {% endblock %}

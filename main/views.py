@@ -12,22 +12,24 @@ def index(request):
         db_timestamp_str = str(db_timestamp)
 
         # make proper datetime object from db_data
-        timestamp_object = datetime.strptime(db_timestamp_str, '%Y-%m-%d %H:%M:%S.%f+00:00')
-
+        print(db_timestamp_str)
+        timestamp_object = datetime.strptime(db_timestamp_str, '%Y-%m-%d %H:%M:%S.%f')
+        
         now = datetime.now()
 
         time_passed = now - timestamp_object
         time_passed = time_passed.total_seconds()
         time_passed_in_m = int(time_passed / 60)
-    
+        
         if db_data.state == 0:
             context = {'state': db_data.state, 'status': 'LEDIGT', 'time_passed': time_passed_in_m}
         elif db_data.state ==1:
             context = {'state': db_data.state, 'status': 'OPTAGET', 'time_passed': time_passed_in_m, 'in_que': db_data.que}
-    
+        
+        
     except:
         context = {'state': 0, 'status': 'No Data', 'time_passed': 0}
-
+    
 
     return render(request, 'index.html', context)
 
