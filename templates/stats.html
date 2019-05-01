@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1 class="state">Stats</h1>
+
+<table>
+<tr>
+    <th>Seneste 10 besøg:</th>
+</tr>
+{% for timestamp in timestamps %}
+    <tr><td>{{timestamp}}</td></tr>
+{% endfor %}
+</table>
+
+{% endblock %}

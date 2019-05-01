@@ -54,6 +54,27 @@ def about(request):
     return render(request, 'about.html')
 
 
+def stats(request):
+    db_data = BrState.objects.get()
+
+    # get timestamps for recent 10
+    
+    
+    db_timestamp = db_data.timestamp
+    db_timestamp_str = str(db_timestamp)
+
+    # make proper datetime object from db_data
+    timestamp_object = datetime.strptime(db_timestamp_str, '%Y-%m-%d %H:%M:%S.%f+00:00')
+
+    
+    timestamps = ['11:30', '12:30', '13:00', '15:34']
+
+    context = {'timestamps': timestamps}
+    
+    return render(request, 'stats.html', context)
+
+
+
 def update_que():
     old_state = BrState.objects.latest('id')
     in_que = old_state.que
