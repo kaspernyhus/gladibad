@@ -20,3 +20,18 @@
     font-size:70%
     }
 
+.stats-table {
+    align: center;
+    font-family: courier;
+    border: 1px solid black;
+}
+
+#stats {
+    font-family: courier;
+    padding: 8px;
+}
+
+#stats td, tr {
+    padding-left: 8px;
+    padding-right: 8px;
+}
