@@ -66,7 +66,7 @@ def stats(request):
     timestamps = timestamps[-20:]
 
     context = {'timestamps': timestamps}
-    
+
     return render(request, 'stats.html', context)
 
 
