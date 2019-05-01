@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import BrState
-from datetime import datetime
+from datetime import datetime, timedelta
 
 def index(request):
     try:
