@@ -55,19 +55,15 @@ def about(request):
 
 
 def stats(request):
-    db_data = BrState.objects.get()
+    db_data = BrState.objects.all()
 
-    # get timestamps for recent 10
-    
-    
-    db_timestamp = db_data.timestamp
-    db_timestamp_str = str(db_timestamp)
+    timestamps = []
 
-    # make proper datetime object from db_data
-    timestamp_object = datetime.strptime(db_timestamp_str, '%Y-%m-%d %H:%M:%S.%f+00:00')
+    for data in db_data:
+        state_time = {'state': data.state, 'timestamp': data.timestamp}
+        timestamps.append(state_time)
 
-    
-    timestamps = ['11:30', '12:30', '13:00', '15:34']
+    timestamps = timestamps[-20:]
 
     context = {'timestamps': timestamps}
     
