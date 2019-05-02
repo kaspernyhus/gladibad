@@ -1,6 +1,6 @@
 # gladibad.pythonanywhere.com
 
-This project persists of two parts; an (Arduino)[https://www.arduino.cc/] senory module and a [Django](https://www.djangoproject.com/) web page displaying results.
+This project persists of two parts; an [Arduino](https://www.arduino.cc/) senory module and a [Django](https://www.djangoproject.com/) web page displaying results.
 
 The overall goal is to couple these to parts to deliver sensory results on a webpage. The particular application is light sensoring to determine whether a shared bathroom is available or not.
 
