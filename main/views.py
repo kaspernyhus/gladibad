@@ -22,9 +22,9 @@ def index(request):
         time_passed_in_m = int(time_passed / 60)
         
         if db_data.state == 0:
-            context = {'state': db_data.state, 'status': 'LEDIGT', 'time_passed': time_passed_in_m}
-        elif db_data.state ==1:
-            context = {'state': db_data.state, 'status': 'OPTAGET', 'time_passed': time_passed_in_m, 'in_que': db_data.que}
+            context = {'state': db_data.state, 'status': 'LEDIGT', 'time_passed': time_passed_in_m, 'current_time': now}
+        elif db_data.state == 1:
+            context = {'state': db_data.state, 'status': 'OPTAGET', 'time_passed': time_passed_in_m, 'current_time': now, 'in_que': db_data.que}
         
         
     except:
