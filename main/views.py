@@ -35,20 +35,18 @@ def index(request):
 
 
 def update_db(request, state):
-    
-    try:
-        old_state = BrState.objects.latest('id')
-        in_que = old_state.que
+    old_state = BrState.objects.latest('id')
+    timestamp = datetime.now()
 
-        timestamp = datetime.now()
-        new_state = BrState(state=state, timestamp=timestamp, que=in_que)
-        new_state.save()
-    except:
-        timestamp = datetime.now()
+    if state == str(old_state.state):
+        status = 'Error: Repeated state'
+
+    else:
         new_state = BrState(state=state, timestamp=timestamp, que='0')
         new_state.save()
-
-    context = {'state': state, 'timestamp': timestamp}
+        status = 'DB updated succesfully'
+    
+    context = {'status': status, 'state': state, 'timestamp': timestamp}
     return render(request, 'updated.html', context)
 
 
@@ -70,7 +68,6 @@ def stats(request):
     context = {'timestamps': timestamps}
 
     return render(request, 'stats.html', context)
-
 
 
 def update_que():

@@ -3,9 +3,9 @@
 
 {% block content %}
 
-<h1 class="state">DB succesfully updated</h1>
+<h1 class="state">{{status}}</h1>
 
 <p class="status">{{state}}</p>
-<p class="status">{{timestamp|date:"d M Y"}} {{timestamp|time:"H:i"}}</p>
+<p class="status">{{timestamp|date:"d M Y"}} {{timestamp|time:"H:i:s"}}</p>
 
 {% endblock %}

@@ -9,15 +9,16 @@
 <tr>
     <th>Tændt</th>
     <th>Slukket</th>
+    <th>Varighed</th>
 </tr>
 {% for timestamp in timestamps %}
     <tr>
         {% if timestamp.state == 1 %}
-            <td>{{timestamp.timestamp|date:"d M Y"}} {{timestamp.timestamp|time:"H:i"}}</td>
+            <td>{{timestamp.timestamp|date:"d M Y"}} {{timestamp.timestamp|time:"H:i:s"}}</td>
             <td></td>
         {% else %}
             <td></td>
-            <td>{{timestamp.timestamp|date:"d M Y"}} {{timestamp.timestamp|time:"H:i"}}</td>
+            <td>{{timestamp.timestamp|date:"d M Y"}} {{timestamp.timestamp|time:"H:i:s"}}</td>
         {% endif %}
     </tr>
 {% endfor %}
