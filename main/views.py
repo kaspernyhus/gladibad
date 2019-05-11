@@ -55,9 +55,7 @@ def about(request):
 
 
 def stats(request):
-    db_data = BrState.objects.all()
-
-    db_data = db_data[-6:]
+    db_data = BrState.objects.all().order_by('id')[2:]
 
     on_timestamps = []
     off_timestamps = []
