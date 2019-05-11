@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<h1 class="state">Seneste 10 besøg</h1>
+<h1 class="state">Seneste besøg</h1>
 
 <table align="center" id="stats">
 <tr>
@@ -11,17 +11,15 @@
     <th>Slukket</th>
     <th>Varighed</th>
 </tr>
-{% for timestamp in timestamps %}
+{% for time_duration in times_durations %}
     <tr>
-        {% if timestamp.state == 1 %}
-            <td>{{timestamp.timestamp|date:"d M Y"}} {{timestamp.timestamp|time:"H:i:s"}}</td>
-            <td></td>
-        {% else %}
-            <td></td>
-            <td>{{timestamp.timestamp|date:"d M Y"}} {{timestamp.timestamp|time:"H:i:s"}}</td>
-        {% endif %}
+        <td>{{time_duration.0|date:"d M Y"}} {{time_duration.0|time:"H:i:s"}}</td>
+        <td>{{time_duration.1|date:"d M Y"}} {{time_duration.1|time:"H:i:s"}}</td>
+        <td>{{time_duration.2}}</td>
     </tr>
 {% endfor %}
 </table>
 
 {% endblock %}
+
+<!-- time_duration.0.0|date:"d M Y"}} {{time_duration.0.0|time:"H:i:s"}} -->
