@@ -57,6 +57,8 @@ def about(request):
 def stats(request):
     db_data = BrState.objects.all()
 
+    db_data = db_data[-6:]
+
     on_timestamps = []
     off_timestamps = []
 
@@ -86,8 +88,6 @@ def stats(request):
             duration = off_timestamp_object.replace(microsecond=0) - on_timestamp_object.replace(microsecond=0)
 
             durations.append(duration)
-
-
 
 
     packed_times = list(zip(on_timestamps, off_timestamps, durations))
