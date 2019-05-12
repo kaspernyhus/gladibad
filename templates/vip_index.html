@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h1 class="state">{{status}}</h1>
+    <br>
+    {% if state == 1 %}
+    <p class="status">Har været optaget i {{time_passed}} {% if time_passed == 1 %} minut {% else %} minutter {% endif %}</p>
+
+    <br>
+
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Notify</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="{% url 'notify_me' slack_user=1 %}">Laura</a>
+          <a href="{% url 'notify_me' slack_user=2 %}">Kasper</a>
+        </div>
+    </div>
+
+    <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+    </script>
+
+    <br>
+
+    {% endif %}
+
+    <br>
+
+    <p class="updated">Siden er opdateret kl.{{current_time|time:"H:i"}}</p>
+
+    <br>
+
+    
+    
+    
+</div>
+
+{% endblock %}

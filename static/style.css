@@ -1,17 +1,17 @@
 .state {
     font-family: courier;
-    text-align:center;
+    text-align: center;
     font-size:300%;
     padding-top: 60px;
 }
 .status {
     font-family: courier;
-    text-align:center;
+    text-align: center;
 }
 
 .updated {
     font-family: courier;
-    text-align:center;
+    text-align: center;
     font-size: 50%;
 }
 .footer {
@@ -34,3 +34,4 @@
     padding-left: 8px;
     padding-right: 8px;
 }
+
