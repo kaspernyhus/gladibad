@@ -55,17 +55,19 @@ def about(request):
 
 
 def stats(request):
-    db_data = BrState.objects.all().order_by('id')[2:]
-
+    db_data = BrState.objects.all().order_by('-id')[0:20]
+    
     on_timestamps = []
     off_timestamps = []
-
+    
     for data in db_data:
         if data.state == 1:
             on_timestamps.append(data.timestamp)
         elif data.state == 0:
             off_timestamps.append(data.timestamp)
  
+    print(on_timestamps)
+    
     durations = []
     
     if on_timestamps[0] < off_timestamps[0]:
@@ -78,8 +80,8 @@ def stats(request):
             durations.append(duration)
 
     else:
-        off_timestamps = off_timestamps[1:]
-        for i, on_time in enumerate(on_timestamps[:-1]):
+        on_timestamps = on_timestamps[1:]
+        for i, on_time in enumerate(on_timestamps):
             on_timestamp_object = datetime.strptime(str(on_time), '%Y-%m-%d %H:%M:%S.%f')
             off_timestamp_object = datetime.strptime(str(off_timestamps[i]), '%Y-%m-%d %H:%M:%S.%f')
 
@@ -91,7 +93,8 @@ def stats(request):
     packed_times = list(zip(on_timestamps, off_timestamps, durations))
 
     context = {'times_durations': packed_times}
-
+    
+    
     return render(request, 'stats.html', context)
 
 
