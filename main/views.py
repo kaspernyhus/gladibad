@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import BrState
-from datetime import datetime, timedelta
+from datetime import datetime
 from django.http import HttpResponseRedirect    
 import slack
 
