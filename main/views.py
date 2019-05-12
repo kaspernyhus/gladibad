@@ -12,7 +12,6 @@ def index(request):
         db_timestamp_str = str(db_timestamp)
 
         # make proper datetime object from db_data
-        print(db_timestamp_str)
         timestamp_object = datetime.strptime(db_timestamp_str, '%Y-%m-%d %H:%M:%S.%f')
         
         now = datetime.now()
@@ -26,11 +25,8 @@ def index(request):
         elif db_data.state == 1:
             context = {'state': db_data.state, 'status': 'OPTAGET', 'time_passed': time_passed_in_m, 'current_time': now, 'in_que': db_data.que}
         
-        
     except:
         context = {'state': 0, 'status': 'No Data', 'time_passed': 0}
-    
-
     return render(request, 'index.html', context)
 
 
@@ -91,7 +87,6 @@ def stats(request, entries_requested=10):
     packed_times = list(zip(on_timestamps, off_timestamps, durations))
 
     context = {'requested_entries': entries_requested, 'times_durations': packed_times}
-    
     return render(request, 'stats.html', context)
 
 
