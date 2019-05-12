@@ -54,8 +54,9 @@ def about(request):
     return render(request, 'about.html')
 
 
-def stats(request):
-    db_data = BrState.objects.all().order_by('-id')[0:20]
+def stats(request, entries_requested):
+    number_of_entries_requested = entries_requested * 2
+    db_data = BrState.objects.all().order_by('-id')[0:number_of_entries_requested]
     
     on_timestamps = []
     off_timestamps = []
