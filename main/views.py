@@ -4,6 +4,7 @@ from datetime import datetime
 from django.http import HttpResponseRedirect    
 import slack
 
+
 def index(request):
     try:
         #get data(object) from db    
