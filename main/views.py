@@ -54,7 +54,7 @@ def about(request):
     return render(request, 'about.html')
 
 
-def stats(request, entries_requested):
+def stats(request, entries_requested=10):
     number_of_entries_requested = entries_requested * 2
     db_data = BrState.objects.all().order_by('-id')[0:number_of_entries_requested]
     
@@ -66,8 +66,6 @@ def stats(request, entries_requested):
             on_timestamps.append(data.timestamp)
         elif data.state == 0:
             off_timestamps.append(data.timestamp)
- 
-    print(on_timestamps)
     
     durations = []
     
@@ -90,11 +88,9 @@ def stats(request, entries_requested):
 
             durations.append(duration)
 
-
     packed_times = list(zip(on_timestamps, off_timestamps, durations))
 
-    context = {'times_durations': packed_times}
-    
+    context = {'requested_entries': entries_requested, 'times_durations': packed_times}
     
     return render(request, 'stats.html', context)
 
