@@ -23,7 +23,7 @@ def index(request):
         if db_data.state == 0:
             context = {'state': db_data.state, 'status': 'LEDIGT', 'time_passed': time_passed_in_m, 'current_time': now}
         elif db_data.state == 1:
-            context = {'state': db_data.state, 'status': 'OPTAGET', 'time_passed': time_passed_in_m, 'current_time': now, 'in_que': db_data.que}
+            context = {'state': db_data.state, 'status': 'OPTAGET', 'time_passed': time_passed_in_m, 'current_time': now}
         
     except:
         context = {'state': 0, 'status': 'No Data', 'time_passed': 0}
@@ -38,7 +38,7 @@ def update_db(request, state):
         status = 'Error: Repeated state'
 
     else:
-        new_state = BrState(state=state, timestamp=timestamp, que='0')
+        new_state = BrState(state=state, timestamp=timestamp, notifier='0')
         new_state.save()
         status = 'DB updated succesfully'
     
@@ -88,15 +88,3 @@ def stats(request, entries_requested=10):
 
     context = {'requested_entries': entries_requested, 'times_durations': packed_times}
     return render(request, 'stats.html', context)
-
-
-def update_que():
-    old_state = BrState.objects.latest('id')
-    in_que = old_state.que
-
-    timestamp = old_state.timestamp
-    state = old_state.state
-
-    new_state = BrState(state=state, timestamp=timestamp, que=in_que)
-    new_state.save()
-    reload()
