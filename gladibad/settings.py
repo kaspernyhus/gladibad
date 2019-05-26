@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '0r@cyojemgy2di9d94x8%)f1)aiovm@g!$uq-@lz6-lu6a!z0-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'gladibad.pythonanywhere.com',
@@ -35,6 +35,9 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'main.apps.MainConfig',
+    'stats.apps.StatsConfig',
+    'notifier.apps.NotifierConfig',
+    'vip.apps.VipConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

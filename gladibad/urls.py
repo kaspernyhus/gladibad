@@ -3,5 +3,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include('main.urls')),
+    path('', include('stats.urls')),
+    path('', include('notifier.urls')),
+    path('', include('vip.urls')),
     path('admin/', admin.site.urls),
 ]

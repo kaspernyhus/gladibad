@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h3 class="state">{{info}}</h3>
+    
+    <br>
+
+    <p class="updated">Siden er opdateret kl.{{current_time|time:"H:i"}}</p>
+</div>
+
+{% endblock %}
