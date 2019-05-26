@@ -3,7 +3,7 @@ from main.models import BrState
 from django.http import HttpResponseRedirect
 import os
 import slack
-from slack_token import slack_token
+from .slack_token import slack_token
 import json
 
 
@@ -74,10 +74,10 @@ def check_if_notify(db_data):
     
     for user in slack_user_json:
         if user['notify'] == 1:
-            try:
-                send_notification(user['id'])
-            except:
-                print('------------ Notification failed ---------------')
+            #try:
+            send_notification(user['id'])
+            #except:
+            #    print('------------ Notification failed ---------------')
 
 
 def reset_notifier():
