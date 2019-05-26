@@ -3,6 +3,7 @@ from main.models import BrState
 from django.http import HttpResponseRedirect
 import os
 import slack
+from slack_token import slack_token
 import json
 
 
@@ -23,7 +24,6 @@ def update_notifier(db_data, json_data):
 
 
 def connect_to_slack():
-    slack_token = ""
     client = slack.WebClient(token=slack_token)
     return client
 
