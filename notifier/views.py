@@ -23,7 +23,7 @@ def update_notifier(db_data, json_data):
 
 
 def connect_to_slack():
-    slack_token = "xoxp-621793017634-632710302996-647834009286-253864ea971a3fd363519aa8ab2baffe"
+    slack_token = ""
     client = slack.WebClient(token=slack_token)
     return client
 
