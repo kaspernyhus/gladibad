@@ -1,1 +1,1 @@
-web: gunicorn gladibad_project.wsgi
+web: gunicorn gladibad_project.gladibad.wsgi

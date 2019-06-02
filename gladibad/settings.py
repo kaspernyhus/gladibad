@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'gladibad.pythonanywhere.com',
     'devgladibad.pythonanywhere.com',
+    'gladibad.herokuapp.com',
     'localhost',
 ]
 
