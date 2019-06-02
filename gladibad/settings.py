@@ -27,6 +27,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     'gladibad.pythonanywhere.com',
+    'devgladibad.pythonanywhere.com/',
     'localhost',
 ]
 
