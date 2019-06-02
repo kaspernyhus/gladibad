@@ -24,7 +24,7 @@ def update_notifier(db_data, json_data):
 
 
 def connect_to_slack():
-    client = slack.WebClient(token=slack_token, ssl=sslcert, proxy=proxyinfo)
+    client = slack.WebClient(token=slack_token, proxy=proxyinfo)
     return client
 
 
