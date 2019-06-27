@@ -6,10 +6,9 @@ def get_stats(entries_requested):
     
     if entries_requested == 'alle':
         total_data = db_data = BrState.objects.all().order_by('-id')
-        td_number = len(total_data) / 2
-        total_entries = td_number - 106
-        number_of_entries_requested = total_entries
-
+        td_number = len(total_data) // 2
+        total_entries = td_number - 103
+        number_of_entries_requested = total_entries * 2
     else:
         number_of_entries_requested = entries_requested * 2
     
