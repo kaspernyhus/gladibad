@@ -171,14 +171,10 @@ def get_most_busy(stats):
 
 
 def get_longest_shower(stats):
-    avgs = get_time_avereges(stats)
     longest_shower = timedelta(seconds=0)
 
-    for weekday in avgs:
-        for day in weekday:
-            for time in day:
-                if isinstance(time, timedelta):
-                    if time > longest_shower:
-                        longest_shower = time
-    
+    for data in stats:
+        if data[2] > longest_shower:
+            longest_shower = data[2]
+
     return longest_shower
