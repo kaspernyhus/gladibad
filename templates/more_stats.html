@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1 class="state">Flere stats</h1>
+<p class="updated">Baseret på de seneste {{requested_entries}} besøg</p>
+
+<br>
+
+<h3 class="status">Gennemsnitslig badelængde</h3>
+
+<table align="center" id="stats">
+<tr>
+    <th></th>
+    <th>00-03</th>
+    <th></th>
+    <th>03-06</th>
+    <th></th>
+    <th>06-09</th>
+    <th></th>
+    <th>09-12</th>
+    <th></th>
+    <th>12-15</th>
+    <th></th>
+    <th>15-18</th>
+    <th></th>
+    <th>18-21</th>
+    <th></th>
+    <th>21-00</th>
+    <th></th>
+</tr>
+
+<tr>
+    {% for weekday in avgs %}
+        {% for day in weekday %}
+            {% for time in day %}
+                {% if time == 'Mandag' or time == 'Tirsdag' or time == 'Onsdag' or time == 'Torsdag' or time == 'Fredag' or time == 'Lørdag' or time == 'Søndag'%}
+                    <th>{{time}}</th>
+                {% else %}
+                <td>{{time}}</td>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+</tr>
+    {% endfor %}
+    
+</table>
+
+<br>
+
+
+<p class="status">Travleste periode: {{most_busy}}</p>
+<p class="status">Længste bad: {{longest_shower}}</p>
+
+
+
+{% endblock %}
