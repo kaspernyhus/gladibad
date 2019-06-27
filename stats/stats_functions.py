@@ -2,8 +2,17 @@ from main.models import BrState
 from datetime import datetime, timedelta
 
 
-def get_stats(entries_requested=10):
-    number_of_entries_requested = entries_requested * 2
+def get_stats(entries_requested):
+    
+    if entries_requested == 'alle':
+        total_data = db_data = BrState.objects.all().order_by('-id')
+        td_number = len(total_data) / 2
+        total_entries = td_number - 106
+        number_of_entries_requested = total_entries
+
+    else:
+        number_of_entries_requested = entries_requested * 2
+    
     db_data = BrState.objects.all().order_by('-id')[0:number_of_entries_requested]
     
     on_timestamps = []

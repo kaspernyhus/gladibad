@@ -9,7 +9,7 @@ def stats(request, entries_requested=10):
     return render(request, 'stats.html', context)
 
 
-def more_stats(request, entries_requested=100):
+def more_stats(request, entries_requested='alle'):
     stats = get_stats(entries_requested)
 
     weekdays = [['Mandag'], ['Tirsdag'], ['Onsdag'], ['Torsdag'], ['Fredag'], ['Lørdag'], ['Søndag']]
