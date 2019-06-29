@@ -11,6 +11,7 @@ def get_stats(entries_requested):
         number_of_entries_requested = total_entries * 2
     else:
         number_of_entries_requested = entries_requested * 2
+        total_entries = entries_requested
     
     db_data = BrState.objects.all().order_by('-id')[0:number_of_entries_requested]
     
