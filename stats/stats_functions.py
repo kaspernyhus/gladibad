@@ -140,6 +140,57 @@ def get_time_avereges(stats):
     return list(zip(weekdays, avgs))
 
 
+def get_most_busy_time(stats):
+    avgs = get_time_avereges(stats)
+    busiest_time = 0
+
+    time_0003 = 0
+    time_0306 = 0
+    time_0609 = 0
+    time_0912 = 0
+    time_1215 = 0
+    time_1518 = 0
+    time_1821 = 0
+    time_2124 = 0
+
+    for weekday in avgs:
+        time_0003 += weekday[1][1]
+        time_0306 += weekday[1][3]
+        time_0609 += weekday[1][5]
+        time_0912 += weekday[1][7]
+        time_1215 += weekday[1][9]
+        time_1518 += weekday[1][11]
+        time_1821 += weekday[1][13]
+        time_2124 += weekday[1][15]
+
+        all_days = [time_0003, time_0306, time_0609, time_0912, time_1215, time_1518, time_1821, time_2124]
+
+    for i, day in enumerate(all_days):
+        if day > busiest_time:
+            busiest_time = day
+            time = i
+
+    def format_time_interval(time_interval):
+        if time_interval == 0:
+            return '00-03'
+        elif time_interval == 1:
+            return '03-06'
+        elif time_interval == 2:
+            return '06-09'
+        elif time_interval == 3:
+            return '09-12'
+        elif time_interval == 4:
+            return '12-15'
+        elif time_interval == 5:
+            return '15-18'
+        elif time_interval == 6:
+            return '18-21'
+        elif time_interval == 7:
+            return '21-00'
+
+    return format_time_interval(time)
+
+
 def get_most_busy(stats):
     avgs = get_time_avereges(stats)
     busiest = 0
