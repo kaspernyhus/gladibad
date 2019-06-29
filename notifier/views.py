@@ -8,9 +8,11 @@ import json
 
 
 def convert_to_json(db_data):
-    json_data = json.loads(db_data) #convert to json
-    return json_data
-
+    try:
+        json_data = json.loads(db_data) #convert to json
+        return json_data
+    except:
+        return [{"id": 0, "name": "Error", "notify": 0}]
 
 def convert_to_str(json_data):
     str_data = json.dumps(json_data) #convert to str
@@ -72,12 +74,15 @@ def notify_me(request, slack_user):
 def check_if_notify(db_data):
     slack_user_json = convert_to_json(db_data.notifier)
     
-    for user in slack_user_json:
-        if user['notify'] == 1:
-            #try:
-            send_notification(user['id'])
-            #except:
-            #    print('------------ Notification failed ---------------')
+    try:
+        for user in slack_user_json:
+            if user['notify'] == 1:
+                #try:
+                send_notification(user['id'])
+                #except:
+                #    print('------------ Notification failed ---------------')
+    except TypeError:
+        pass
 
 
 def reset_notifier():
@@ -85,10 +90,13 @@ def reset_notifier():
 
     user_data_json = convert_to_json(db_data.notifier)
 
-    for user in user_data_json:
-        user['notify'] = 0
-    
-    return convert_to_str(user_data_json)
+    try:
+        for user in user_data_json:
+            user['notify'] = 0
+        
+        return convert_to_str(user_data_json)
+    except TypeError:
+        return [{"id": 0, "name": "Error", "notify": 0}]
 
 
 def send_notification(user_id):
