@@ -46,7 +46,7 @@ def get_stats(entries_requested):
 
     packed_times = list(zip(on_timestamps, off_timestamps, durations))
     
-    return packed_times
+    return [packed_times, total_entries]
  
 
 def chop_microseconds(delta):
