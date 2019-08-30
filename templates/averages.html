@@ -3,12 +3,15 @@
 
 {% block content %}
 
-<h1 class="state">Flere stats</h1>
+
+
+<br>
+<br>
+
+<h2 class="status">Gennemsnitslige badelængder</h2>
 <p class="updated">Baseret på {{requested_entries}} ({{number_of_entries}}) besøg</p>
 
 <br>
-
-<h3 class="status">Gennemsnitslig badelængde</h3>
 
 <table align="center" id="stats">
 <tr>
@@ -24,13 +27,13 @@
 </tr>
 
 <tr>
-    {% for weekday in avgs %}
+    {% for weekday in avgs %}  
         {% for day in weekday %}
             {% for time in day %}
                 {% if time == 'Mandag' or time == 'Tirsdag' or time == 'Onsdag' or time == 'Torsdag' or time == 'Fredag' or time == 'Lørdag' or time == 'Søndag'%}
                     <th>{{time}}</th>
                 {% else %}
-                <td> {% for color in colors %} <font color=color> {% endfor %} {{time}}</font></td>
+                <td><font color={{time.1}}>{{time.0}}</font></td>
                 {% endif %}
             {% endfor %}
         {% endfor %}

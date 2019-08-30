@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     path('stats/', views.stats, name='stats'),
     path('stats<int:entries_requested>/', views.stats, name='stats'),
-    path('more_stats/', views.more_stats, name='more_stats'),
-    path('more_stats<int:entries_requested>/', views.more_stats, name='more_stats'),
+    path('gennemsnit/', views.averages, name='averages'),
+    path('gennemsnit<int:entries_requested>/', views.averages, name='averages'),
 
 ]

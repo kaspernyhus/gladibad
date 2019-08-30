@@ -56,10 +56,21 @@ def get_time_avereges(stats):
 
     avgs = []
 
+    colors = _get_color_times(stats)
+    
+
     for day in all_days:
         avgs.append(_get_day_avg(day))
 
-    return list(zip(weekdays, avgs)) # [(['Mandag'], [datetime.timedelta(seconds=1028), ...]), (['Tirsdag'], [datetime.timedelta(seconds=1028), ...])]
+    packed_list = []
+
+    for i, day in enumerate(avgs):
+        #print(i, day)
+
+        packed_list.append(list(zip(day, colors[i])))
+
+
+    return list(zip(weekdays, packed_list)) # [(['Mandag'], [datetime.timedelta(seconds=1028), ...]), (['Tirsdag'], [datetime.timedelta(seconds=1028), ...])]
 
 
 def _get_day_avg(day):
@@ -82,6 +93,35 @@ def _get_day_avg(day):
 
     return averages 
 
+
+def _get_color_times(stats):
+    counts = get_avereges_counts(stats)
+    total_counts = _get_total_counts(counts)
+    colors = []
+
+    for day in counts:
+        color_codes = []
+        for count in day[1]:
+            procent = (count/total_counts)*100
+            if procent > 3.5:
+                color_codes.append('Tomato')
+            elif 2.3 < procent <= 3.5:
+                color_codes.append('Gold')
+            else:
+                color_codes.append('MediumSeaGreen')
+
+        colors.append(color_codes)
+
+    return colors
+
+
+def _get_total_counts(data):
+    total = 0
+    for day in data:
+        for count in day[1]:
+            total += count
+
+    return total
 
 def _clean_timedata(interval):
     cl_interval = []
@@ -226,7 +266,6 @@ def get_most_busy_time(stats):
 
     return_str = str(day_of_week) + ' ' + _format_time_interval(time_interval)
 
-    print(return_str)
     return return_str
 
 
@@ -239,32 +278,3 @@ def get_longest_shower(stats):
 
     return longest_shower
 
-
-def _get_color_times(stats):
-    counts = get_avereges_counts(stats)
-    total_counts = _get_total_counts(counts)
-    colors = []
-
-    for day in data:
-        color_codes = []
-        for count in day[1]:
-            procent = (count/total_counts)*100
-            if procent > 3.5:
-                color_codes.append('red')
-            elif 2.5 < procent <= 3.5:
-                color_codes.append('yellow')
-            else:
-                color_codes.append('green')
-
-        colors.append(color_codes)
-
-    return colors
-
-
-def _get_total_counts(data):
-    total = 0
-    for day in data:
-        for count in day[1]:
-            total += count
-
-    return total
