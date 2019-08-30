@@ -14,21 +14,13 @@
 <tr>
     <th></th>
     <th>00-03</th>
-    <th></th>
     <th>03-06</th>
-    <th></th>
     <th>06-09</th>
-    <th></th>
     <th>09-12</th>
-    <th></th>
     <th>12-15</th>
-    <th></th>
     <th>15-18</th>
-    <th></th>
     <th>18-21</th>
-    <th></th>
     <th>21-00</th>
-    <th></th>
 </tr>
 
 <tr>
@@ -38,7 +30,7 @@
                 {% if time == 'Mandag' or time == 'Tirsdag' or time == 'Onsdag' or time == 'Torsdag' or time == 'Fredag' or time == 'Lørdag' or time == 'Søndag'%}
                     <th>{{time}}</th>
                 {% else %}
-                <td>{{time}}</td>
+                <td> {% for color in colors %} <font color=color> {% endfor %} {{time}}</font></td>
                 {% endif %}
             {% endfor %}
         {% endfor %}
@@ -49,9 +41,9 @@
 
 <br>
 
-<p class="status">Travleste periode: {{most_busy_time}}</p>
-<p class="status">Travleste tidspunkt: {{most_busy}}</p>
-<p class="status">Længste bad: {{longest_shower}}</p>
+<p class="status">Generelt er det travleste tidspunkt på dagen tidsrummet fra {{most_busy_periode}}</p>
+<p class="status">Det travleste tidspunkt på ugen er {{most_busy_time}}</p>
+
 
 
 
