@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<h1 class="state">Seneste besøg</h1>
+
+{% if show == True %}
+
+<table align="center" id="stats">
+<tr>
+    <th>Tændt</th>
+    <th>Slukket</th>
+    <th>Varighed</th>
+</tr>
+
+    <tr>
+        <td>{{time_duration.0.0|date:"d M Y"}} {{time_duration.0.0|time:"H:i:s"}}</td>
+        <td>{{time_duration.0.1|date:"d M Y"}} {{time_duration.0.1|time:"H:i:s"}}</td>
+        <td>{{time_duration.0.2}}</td>
+    </tr>
+
+</table>
+
+{% endif %}
+
+<br>
+
+<p class="updated">Siden er opdateret kl.{{current_time|time:"H:i"}}</p>
+
+{% endblock %}

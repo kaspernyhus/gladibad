@@ -38,7 +38,6 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'main.apps.MainConfig',
     'stats.apps.StatsConfig',
-    'notifier.apps.NotifierConfig',
     'vip.apps.VipConfig',
     'django.contrib.admin',
     'django.contrib.auth',

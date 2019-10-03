@@ -58,17 +58,13 @@ def get_time_avereges(stats):
 
     colors = _get_color_times(stats)
     
-
     for day in all_days:
         avgs.append(_get_day_avg(day))
 
     packed_list = []
 
     for i, day in enumerate(avgs):
-        #print(i, day)
-
         packed_list.append(list(zip(day, colors[i])))
-
 
     return list(zip(weekdays, packed_list)) # [(['Mandag'], [datetime.timedelta(seconds=1028), ...]), (['Tirsdag'], [datetime.timedelta(seconds=1028), ...])]
 
