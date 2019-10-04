@@ -39,7 +39,7 @@ def update_db(request, state):
         status = 'Error: Repeated state'
 
     else:
-        new_state = BrState(state=state, timestamp=timestamp, notifier=notifier)
+        new_state = BrState(state=state, timestamp=timestamp, notifier='[{}]')
         new_state.save()
         status = 'DB updated succesfully'
 
