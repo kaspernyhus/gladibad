@@ -25,6 +25,7 @@ def get_stats(entries_requested):
     
     durations = []
     
+
     if on_timestamps[0] < off_timestamps[0]:
         for i, on_time in enumerate(on_timestamps):
             on_timestamp_object = datetime.strptime(str(on_time), '%Y-%m-%d %H:%M:%S.%f')
@@ -48,6 +49,7 @@ def get_stats(entries_requested):
     
     return [packed_times, total_entries]
 
+        
 
 def get_time_avereges(stats):
     all_days = _parse_days(stats)
