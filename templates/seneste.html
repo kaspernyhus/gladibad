@@ -4,9 +4,8 @@
 
 {% block content %}
 
-<h1 class="state">Seneste besøg</h1>
-
 {% if show == True %}
+<h1 class="state">Seneste besøg</h1>
 
 <table align="center" id="stats">
 <tr>
@@ -22,6 +21,18 @@
     </tr>
 
 </table>
+
+{% elif show == 'Optaget' %}
+<br>
+<br>
+<br>
+<p class="status">Baderummet er i øjeblikket optaget.</p>
+
+{% else %}
+<br>
+<br>
+<br>
+<p class="status">Baderummet har ikke været optaget inden for de seneste 15min.</p>
 
 {% endif %}
 

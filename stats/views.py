@@ -18,11 +18,6 @@ def averages(request, entries_requested='alle'):
     most_busy_time = get_most_busy_time(stats[0])
     colors = _get_color_times(stats[0])
 
-    print("----------------------------")
-    print(avgs)
-
-    print("----------------------------")
-
     context = {'requested_entries': entries_requested, 'number_of_entries': stats[1], 'avgs': avgs, 'most_busy_periode': most_busy_periode, 'most_busy_time': most_busy_time, 'colors': colors }
     return render(request, 'averages.html', context)
 
@@ -32,11 +27,14 @@ def latest(request):
     now = datetime.now()
     interval = (now - timedelta(seconds=(900)))
 
-    if stats[0][0][1] > interval:
-        show_flag = True
+    try:
+        if stats[0][0][1] > interval:
+            show_flag = True
 
-    else:
-        show_flag = False
+        else:
+            show_flag = False
+    except:
+        show_flag = 'Optaget'
 
 
     context = {'time_duration': stats[0], 'current_time': now, 'show': show_flag}
