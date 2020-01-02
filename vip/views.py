@@ -1,12 +1,10 @@
 from django.shortcuts import render
 from datetime import datetime
 from main.models import BrState
+from django.http import HttpResponseRedirect
+import slack
 
-
-def avg_ocupancy(time_of_day):
-    #return datetime minutes
-    pass
-
+slack_token = ""
 
 def vip_index(request):
     try:
@@ -27,15 +25,30 @@ def vip_index(request):
         time_passed_in_m = int(time_passed / 60)
         
 
-        #avg_ocupancy(now)
-        avg_ocupancy = 12
-
         if db_data.state == 0:
             context = {'state': db_data.state, 'status': 'LEDIGT', 'time_passed': time_passed_in_m, 'current_time': now}
         elif db_data.state == 1:
-            context = {'state': db_data.state, 'status': 'OPTAGET', 'time_passed': time_passed_in_m, 'current_time': now, 'avg_ocu': avg_ocupancy}
+            context = {'state': db_data.state, 'status': 'OPTAGET', 'time_passed': time_passed_in_m, 'current_time': now}
         
     except:
         context = {'state': 0, 'status': 'No Data', 'time_passed': 0}
     
     return render(request, 'vip_index.html', context)
+
+
+def notify_me(request):
+    db_data = BrState.objects.latest('id')
+    
+    db_data.notifier = True
+    db_data.save(update_fields=['notifier'])
+
+    return HttpResponseRedirect('/')
+
+
+def send_notification():
+    client = slack.WebClient(token=slack_token)
+    
+    print('------------- Notification sent --------------')
+    response = client.chat_postMessage(
+        channel='#gladibad_ledigt',
+        text="Baddet er ledigt nu!")

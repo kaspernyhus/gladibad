@@ -6,44 +6,13 @@
     <br>
     {% if state == 1 %}
     <p class="status">Har været optaget i {{time_passed}} {% if time_passed == 1 %} minut {% else %} minutter {% endif %}</p>
-    <br>
-    <p class="avg_ocu">Forventet tid indtil ledigt: {{avg_ocu}} {% if time_passed == 1 %} minut {% else %} minutter {% endif %}</p>
 
     <br>
 
     <div class="center">
-      <div class="dropdown">
-          <button onclick="myFunction()" class="dropbtn">Notificer mig</button>
-          <div id="myDropdown" class="dropdown-content">
-            <a href="{% url 'notify_me' slack_user=1 %}">Laura</a>
-            <a href="{% url 'notify_me' slack_user=2 %}">Kasper</a>
-            <a href="{% url 'notify_me' slack_user=3 %}">Gabriel</a>
-          </div>
-      </div>
+      <a href="{% url 'notify_me' %}" class="button" onclick="myFunction()">Notify Me!</a>
     </div>
     
-    <script>
-        /* When the user clicks on the button, 
-        toggle between hiding and showing the dropdown content */
-        function myFunction() {
-          document.getElementById("myDropdown").classList.toggle("show");
-        }
-        
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(event) {
-          if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-              var openDropdown = dropdowns[i];
-              if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-              }
-            }
-          }
-        }
-    </script>
-
     <br>
 
     {% endif %}
@@ -58,5 +27,11 @@
     
     
 </div>
+
+<script>
+  function myFunction() {
+    alert("Du vil blive notificeret på Slack når lyset slukkes. Mvh Bademesteren");
+  }
+  </script>
 
 {% endblock %}

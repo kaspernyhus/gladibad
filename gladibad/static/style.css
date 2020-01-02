@@ -39,7 +39,7 @@ font-size: 40%;
 
 .center {
   margin: auto;
-  width: 70px;
+  width: 115px;
 }
 
 #stats {
@@ -98,3 +98,18 @@ font-size: 40%;
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
+
+
+.button {
+  background-color: #ff8f8f;
+  border: none;
+  color: black;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  font-family: courier;
+  display: inline-block;
+  font-size: 65%;
+  margin: 4px 2px;
+  cursor: pointer;
+  }

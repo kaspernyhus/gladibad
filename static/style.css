@@ -98,3 +98,18 @@ font-size: 40%;
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
+
+
+.button {
+  background-color: #e45656;
+  border: none;
+  color: white;
+  padding: 20px 34px;
+  text-align: center;
+  text-decoration: none;
+  font-family: courier;
+  display: inline-block;
+  font-size: 50%;
+  margin: 4px 2px;
+  cursor: pointer;
+  }

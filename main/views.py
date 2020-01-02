@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import BrState
 from datetime import datetime
+from vip.views import send_notification
 
 
 def index(request):
@@ -35,11 +36,17 @@ def update_db(request, state):
     old_state = BrState.objects.latest('id')
     timestamp = datetime.now()
 
+    notify = old_state.notifier
+
+
     if state == str(old_state.state):
         status = 'Error: Repeated state'
 
     else:
-        new_state = BrState(state=state, timestamp=timestamp, notifier='[{}]')
+        if notify:
+            send_notification()
+
+        new_state = BrState(state=state, timestamp=timestamp, notifier='0')
         new_state.save()
         status = 'DB updated succesfully'
 
