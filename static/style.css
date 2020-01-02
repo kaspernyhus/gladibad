@@ -39,7 +39,7 @@ font-size: 40%;
 
 .center {
   margin: auto;
-  width: 70px;
+  width: 115px;
 }
 
 #stats {
@@ -101,15 +101,17 @@ font-size: 40%;
 
 
 .button {
-  background-color: #e45656;
+  background-color: #ff8f8f;
   border: none;
-  color: white;
-  padding: 20px 34px;
+  color: black;
+  padding: 12px 24px;
   text-align: center;
   text-decoration: none;
   font-family: courier;
   display: inline-block;
-  font-size: 50%;
+  font-size: 65%;
   margin: 4px 2px;
   cursor: pointer;
   }
+
+.button a:hover {background-color: #ddd;}

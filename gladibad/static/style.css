@@ -113,3 +113,6 @@ font-size: 40%;
   margin: 4px 2px;
   cursor: pointer;
   }
+
+
+.button a:hover {background-color: #ddd;}
