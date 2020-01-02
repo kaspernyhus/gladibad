@@ -46,9 +46,12 @@ def notify_me(request):
 
 
 def send_notification():
-    client = slack.WebClient(token=slack_token)
+    try:
+        client = slack.WebClient(token=slack_token)
     
-    print('------------- Notification sent --------------')
-    response = client.chat_postMessage(
-        channel='#gladibad_ledigt',
-        text="Baddet er ledigt nu!")
+        print('------------- Notification sent --------------')
+        response = client.chat_postMessage(
+            channel='#gladibad_ledigt',
+            text="Baddet er ledigt nu!")
+    except:
+        pass
