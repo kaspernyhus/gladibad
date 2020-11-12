@@ -32,7 +32,7 @@ def index(request):
         context = {'state': 0, 'status': 'No Data', 'time_passed': 0}
     
     if db_timestamp < error_test:
-        return render(request, 'error.html', context)
+        return render(request, 'error.html')
     else:
         return render(request, 'index.html', context)
 
