@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import BrState
-from datetime import datetime
+from datetime import datetime, timedelta
 from vip.views import send_notification
 
 
@@ -17,6 +17,7 @@ def index(request):
         timestamp_object = datetime.strptime(db_timestamp_str, '%Y-%m-%d %H:%M:%S.%f')
         
         now = datetime.now()
+        error_test = now - timedelta(days=1)
 
         time_passed = now - timestamp_object
         time_passed = time_passed.total_seconds()
@@ -29,7 +30,11 @@ def index(request):
         
     except:
         context = {'state': 0, 'status': 'No Data', 'time_passed': 0}
-    return render(request, 'index.html', context)
+    
+    if db_timestamp < error_test:
+        return render(request, 'error.html', context)
+    else:
+        return render(request, 'index.html', context)
 
 
 def update_db(request, state):

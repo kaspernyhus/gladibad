@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <br>
+    
+    <h1>Der er muligvis sket en fejl</h1>
+    <p>Dimsen har måske ikke fat i internettet</p>
+    <p>Prøv følgende hvis dimsen blinker blåt</p>
+    <ul>
+      <li>Sluk og tænd igen - hvis den blinker hurtigt to gange har den fat igen</li>
+      <li>Hvis den stadig bare blinker langsomt, virker det ikke</li>
+    </ul>
+
+    <br>
+
+    <p class="updated">Siden er opdateret kl.{{current_time|time:"H:i"}}</p>
+</div>
+
+{% endblock %}
