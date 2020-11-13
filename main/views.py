@@ -31,7 +31,9 @@ def index(request):
     except:
         context = {'state': 0, 'status': 'No Data', 'time_passed': 0}
     
-    if db_timestamp < error_test:
+    if db_timestamp < error_test: # if no state update from the bathroom for more than a day
+        return render(request, 'error.html', {'current_time': now})
+    elif db_data.state == 1 and time_passed_in_m > 180: # if bath has been occupied for more than 3 hours
         return render(request, 'error.html', {'current_time': now})
     else:
         return render(request, 'index.html', context)
