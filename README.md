@@ -5,7 +5,7 @@ This project persists of two parts; an [Arduino](https://www.arduino.cc/) senory
 The overall goal is to couple these to parts to deliver sensory results on a webpage. The particular application is light sensoring to determine whether a shared bathroom is available or not.
 
 ## Arduino sensory module
-![esp32 in case](https://www.dropbox.com/s/5sj0q883gqx5anl/2019-05-01%2021.50.06.jpg?dl=0)
+![esp32 in case](https://www.dropbox.com/s/5sj0q883gqx5anl/2019-05-01%2021.50.06.jpg)
 The part only consists of one file, which is located in the [Arduino](Arduino/) folder. All this file does is run a loop that checks if the sensored light is above or below a certain threshold and sends an update if the state changes.
 
 ## Django web page
